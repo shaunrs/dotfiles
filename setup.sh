@@ -35,4 +35,5 @@ sudo systemctl enable lock-and-suspend@${USER}
 sudo systemctl enable autorandr-on-resume@${USER}
 
 # Start TLP
+sudo sed -i 's/#DEVICES_TO_DISABLE_ON_STARTUP=.*/DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"/' /etc/tlp.conf
 sudo systemctl start tlp
