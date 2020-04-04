@@ -1,0 +1,13 @@
+[Unit]
+Description=Detect displays on laptop resume
+After=suspend.target
+
+[Service]
+User=%I
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=-/usr/bin/autorandr -c
+
+[Install]
+WantedBy=suspend.target
+

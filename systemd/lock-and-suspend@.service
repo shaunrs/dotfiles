@@ -1,0 +1,15 @@
+[Unit]
+Description=Lock and suspend
+Before=sleep.target
+
+[Service]
+User=%I
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=-/usr/bin/i3lock -n -c 202020
+ExecStartPost=-/bin/sleep 1
+
+[Install]
+WantedBy=suspend.target
+WantedBy=sleep.target
+
