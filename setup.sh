@@ -7,6 +7,8 @@ sudo apt-get -y install apt-transport-https
 sudo apt-get install -y i3 i3lock rofi arandr autorandr py3status fish compton numlockx xautolock
 
 # Laptop battery power management
+# Unsigned DKMS Kernel modules such as acpi_call and tlp_smapi are disabled under SecureBoot
+# A problem for another day
 sudo apt-get install -y tlp tp-smapi-dkms acpi-call-dkms smartmontools
 
 # Debugging tools
