@@ -16,7 +16,7 @@ sudo apt-get install -y opensc pcscd scdaemon yubico-piv-tool
 sudo apt-get -y install git
 
 # Switch to fish
-sudo chsh -s /usr/bin/fish shaun
+sudo chsh -s /usr/bin/fish ${USER}
 
 # Configure intel graphics
 # Without this, X1 Carbon suffers a crash killing X after closing the lid
@@ -25,9 +25,9 @@ sudo cp xorg/20-intel.conf /etc/X11/xorg.conf.d/
 
 # Ensure the screen is locked on suspend via systemd
 # and autorandr -c is run on resume (in case screen configuration has changed)
-sudo cp systemd/lock-on-suspend@.service /etc/systemd/system/
-sudo cp systemd/autorandr-on-resume@.service /etc/systemd/system/
+sudo cp systemd/lock-and-suspend\@.service /etc/systemd/system/
+sudo cp systemd/autorandr-on-resume\@.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable lock-on-suspend@${USER}
+sudo systemctl enable lock-and-suspend@${USER}
 sudo systemctl enable autorandr-on-resume@${USER}
 
