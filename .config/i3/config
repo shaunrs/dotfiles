@@ -143,6 +143,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # lock the screen
 bindsym $alt+l exec --no-startup-id systemctl suspend
 # i3 does not send idle events to systemd, so we must use xautolock instead
+# xidlehook might be a better option, but can't be bothered to package it up right now
 exec --no-startup-id xautolock -time 5 -locker "systemctl suspend" -detectsleep
 
 # reload the configuration file
