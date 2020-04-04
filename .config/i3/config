@@ -30,9 +30,6 @@ font pango:DejaVu Sans Mono 11
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Start light-locker to enable screen locking with powerdown
-exec --no-startup-id light-locker
-
 # Enable numlock
 exec --no-startup-id numlockx on
 
@@ -83,6 +80,10 @@ bindsym $mod+Shift+Right move right
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
+
+# Brightness
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
 # split in horizontal orientation
 #bindsym $mod+h split h
@@ -150,8 +151,10 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # lock the screen
-bindsym $alt+l exec --no-startup-id light-locker-command -l
-#bindsym $alt+l exec --no-startup-id i3lock
+bindsym $alt+l exec --no-startup-id systemctl suspend
+# i3 does not sent idle events to systemd, so we must use xautolock instead
+exec --no-startup-id xautolock -time 1 -locker "systemctl suspend" -detectsleep
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
