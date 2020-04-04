@@ -6,6 +6,9 @@ sudo apt-get -y install apt-transport-https
 # Desktop environment
 sudo apt-get install -y i3 i3lock rofi arandr autorandr py3status fish compton numlockx xautolock
 
+# Laptop battery power management
+sudo apt-get install -y tlp tp-smapi-dkms acpi-call-dkms smartmontools
+
 # Debugging tools
 sudo apt-get install -y vim htop tmux chrony build-essential 
 
@@ -13,7 +16,7 @@ sudo apt-get install -y vim htop tmux chrony build-essential
 sudo apt-get install -y opensc pcscd scdaemon yubico-piv-tool
 
 # Daily tooling
-sudo apt-get -y install git
+sudo apt-get -y install git python3-pip python3-venv
 
 # Switch to fish
 sudo chsh -s /usr/bin/fish ${USER}
@@ -31,3 +34,5 @@ sudo systemctl daemon-reload
 sudo systemctl enable lock-and-suspend@${USER}
 sudo systemctl enable autorandr-on-resume@${USER}
 
+# Start TLP
+sudo systemctl start tlp
